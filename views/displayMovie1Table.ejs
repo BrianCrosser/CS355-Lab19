@@ -3,20 +3,20 @@
     <div>
     <% if(rs.length > 0) { %>
         <table border="1">
-            <tr><th>Name</th></tr>
+            <tr><th>Title</th></tr>
             <% for (var i=0; rs.length > i; i++) { %>
                 <tr>
-                 <td><a href="/student/?studentid=<%= rs[i].Student_number %>"> <%= rs[i].Name %></a></td>
+                 <td><a href="/movie1/?studentid=<%= rs[i].Student_number %>"> <%= rs[i].Title %></a></td>
                 </tr>
             <% } %>
         </table>
     <% } else { %>
-         No students are entered into the Student database table.
+         No movies are entered into the Movie1 database table.
     <% } %>
     </div>
 
     <div style="margin-top:10px;">
-        <a href="/student/create">Create New Student</a>
+        <a href="/movie1/create">Create New Movie</a>
     </div>
 
 <% include footer %>

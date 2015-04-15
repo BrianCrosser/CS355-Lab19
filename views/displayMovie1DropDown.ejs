@@ -2,12 +2,12 @@
 
 
 <% if(rs.length > 0) { %>
-<form method="post" action="/student/dropdown">
-    <label for="student_id">Students</label>
+<form method="post" action="/movie1/dropdown">
+    <label for="student_id">Movies</label>
     <select id="student_id" name="student_id">
         <% for (var i=0; rs.length > i; i++) { %>
         <option value="<%= rs[i].Student_number %>">
-            <%= rs[i].Name %>
+            <%= rs[i].Title %>
         </option>
         <% } %>
     </select>

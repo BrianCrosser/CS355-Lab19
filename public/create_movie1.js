@@ -1,13 +1,11 @@
 $(document).ready(function () {
-    $('#createStudentBtn').click( function(){
+    $('#createMovie1Btn').click( function(){
         var payload = {
-            name: $('#name').val(),
-            major: $('#major').val(),
-            location: $('#location').val()
+            Title: $('#Title').val()
         };
 
         $.ajax({
-            url: $("#create_user_form").attr("action"),
+            url: $("#create_movie1_form").attr("action"),
             type: "POST",
             contentType: "application/json",
             processData: false,

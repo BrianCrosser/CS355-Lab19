@@ -1,8 +1,6 @@
-<h2>Student Inserted</h2>
+<h2>Movie Inserted</h2>
 <% if(rs.length > 0) { %>
-    Name: <%= rs[0].Name %> <br />
-    Major: <%= rs[0].Major %> <br />
-    Location: <%= rs[0].Location %> <br />
+    Title: <%= rs[0].Title %> <br />
 <% } else { %>
-    No student matched this student id <%= studentid %>.
+    No movies matched this title id <%= studentid %>.
 <% } %>

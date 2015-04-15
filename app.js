@@ -5,7 +5,7 @@ var express = require('express'),
 
 // import routes
 var routes = require('./controller/index');
-var student_route  = require('./controller/student');
+var movie1_route  = require('./controller/movie1');
 
 // initialize express web application framework
 // http://expressjs.com/
@@ -27,11 +27,11 @@ app.set('subtitle', 'Lab 18');
 
 //configure routes
 app.use('/', routes);
-app.use('/student', student_route);
+app.use('/movie1', movie1_route);
 
 // configure static directory for javascript, css, etc.
 app.use(express.static('public'));
 
-app.set('port', 3000);  //use your own port
+app.set('port', 8010);  //use your own port
 app.listen(app.get('port'));
 console.log("Express server listening on port", app.get('port'));

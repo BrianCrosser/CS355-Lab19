@@ -7,7 +7,7 @@ var db   = require('../models/db');
 router.get('/all', function (req, res) {
     db.GetAll(function (err, result) {
             if (err) throw err;
-            res.render('displayStudentsTable.ejs', {rs: result});
+            res.render('displayMovie1Table.ejs', {rs: result});
         }
     );
 });
@@ -16,14 +16,14 @@ router.get('/all', function (req, res) {
 /* View a single students information */
 router.get('/', function (req, res) {
     if(req.query.studentid == null) {
-        res.redirect('/student/all');
+        res.redirect('/movie1/all');
     }
     else {
         db.GetByID(req.query.studentid, function (err, result) {
                 if (err) throw err;
 
                 // Send result to the template along with the original student id in case there were no results
-                res.render('displayStudentInfo.ejs', {rs: result, studentid: req.query.studentid});
+                res.render('displayMovieInfo.ejs', {rs: result, studentid: req.query.studentid});
             }
         );
     }
@@ -31,7 +31,7 @@ router.get('/', function (req, res) {
 
 // Create Student Form
 router.get('/create', function(req, res){
-    res.render('createStudentForm.ejs', {action: '/student/create'});
+    res.render('createMovie1Form.ejs', {action: '/movie1/create'});
 });
 
 // Save Student information
@@ -45,12 +45,12 @@ router.post('/create', function (req, res) {
             if(typeof result.insertId !== 'undefined') {
                 db.GetByID(result.insertId, function(err, result){
 
-                    res.render('displayStudentInfoSnippet.ejs', {rs: result, studentid: result.insertId});
+                    res.render('displayMovie1InfoSnippet.ejs', {rs: result, studentid: result.insertId});
 
                 });
             }
             else {
-                res.send('Student was not inserted.');
+                res.send('Movie was not inserted.');
             }
         }
     );
@@ -60,7 +60,7 @@ router.post('/create', function (req, res) {
 router.get('/dropdown', function (req, res) {
     db.GetAllView(function (err, result) {
             if (err) throw err;
-            res.render('displayStudentDropDown.ejs', {rs: result});
+            res.render('displayMovie1DropDown.ejs', {rs: result});
         }
     );
 });

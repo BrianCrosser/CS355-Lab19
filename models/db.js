@@ -5,7 +5,7 @@ var db  = require('./db_connection.js');
 var connection = mysql.createConnection(db.config);
 
 exports.GetAll = function(callback) {
-    connection.query('select * from Student',
+    connection.query('select * from Movie1',
         function (err, result) {
             if(err) {
                 console.log(err);
@@ -20,7 +20,7 @@ exports.GetAll = function(callback) {
 
 exports.GetAllView = function(callback) {
     // CREATE VIEW StudentsView AS SELECT * FROM Students;
-    connection.query('select Student_number, Name from StudentsView',
+    connection.query('select Title from Movie1',
         function (err, result) {
             if(err) {
                 console.log(err);
@@ -35,7 +35,7 @@ exports.GetAllView = function(callback) {
 
 exports.GetByID = function(studentid, callback) {
     console.log(studentid);
-    var query = 'select * from Student WHERE Student_number=' + studentid;
+    var query = 'select * from Movie1 WHERE Student_number=' + studentid;
     console.log(query);
     connection.query(query,
         function (err, result) {
@@ -49,9 +49,9 @@ exports.GetByID = function(studentid, callback) {
     );
 }
 
-exports.Insert = function(student_info, callback) {
-    console.log(student_info);
-    var query = 'INSERT INTO Student (Name, Major, Location) VALUES (\'' + student_info.name + '\', \'' + student_info.major + '\', \'' + student_info.location + '\')';
+exports.Insert = function(movie1_info, callback) {
+    console.log(movie1_info);
+    var query = 'INSERT INTO Movie1 (Title) VALUES (\'' + movie1_info.Title + '\')';
     console.log(query);
     connection.query(query,
         function (err, result) {
