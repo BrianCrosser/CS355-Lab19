@@ -15,15 +15,15 @@ router.get('/all', function (req, res) {
 
 /* View a single students information */
 router.get('/', function (req, res) {
-    if(req.query.studentid == null) {
+    if(req.query.movie1id == null) {
         res.redirect('/movie1/all');
     }
     else {
-        db.GetByID(req.query.studentid, function (err, result) {
+        db.GetByID(req.query.movie1id, function (err, result) {
                 if (err) throw err;
 
                 // Send result to the template along with the original student id in case there were no results
-                res.render('displayMovieInfo.ejs', {rs: result, studentid: req.query.studentid});
+                res.render('displayMovie1Info.ejs', {rs: result, movie1id: req.query.movie1id});
             }
         );
     }
@@ -45,7 +45,7 @@ router.post('/create', function (req, res) {
             if(typeof result.insertId !== 'undefined') {
                 db.GetByID(result.insertId, function(err, result){
 
-                    res.render('displayMovie1InfoSnippet.ejs', {rs: result, studentid: result.insertId});
+                    res.render('displayMovie1InfoSnippet.ejs', {rs: result, movie1id: result.insertId});
 
                 });
             }

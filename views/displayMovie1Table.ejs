@@ -6,7 +6,7 @@
             <tr><th>Title</th></tr>
             <% for (var i=0; rs.length > i; i++) { %>
                 <tr>
-                 <td><a href="/movie1/?studentid=<%= rs[i].Student_number %>"> <%= rs[i].Title %></a></td>
+                 <td><a href="/movie1/?movie1id=<%= rs[i].MovieID %>"> <%= rs[i].Title %></a></td>
                 </tr>
             <% } %>
         </table>

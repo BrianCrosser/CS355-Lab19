@@ -20,7 +20,7 @@ exports.GetAll = function(callback) {
 
 exports.GetAllView = function(callback) {
     // CREATE VIEW StudentsView AS SELECT * FROM Students;
-    connection.query('select Title from Movie1',
+    connection.query('select * from Movie1',
         function (err, result) {
             if(err) {
                 console.log(err);
@@ -33,9 +33,9 @@ exports.GetAllView = function(callback) {
 }
 
 
-exports.GetByID = function(studentid, callback) {
-    console.log(studentid);
-    var query = 'select * from Movie1 WHERE Student_number=' + studentid;
+exports.GetByID = function(movie1id, callback) {
+    console.log(movie1id);
+    var query = 'select * from Movie1 WHERE MovieID=' + movie1id;
     console.log(query);
     connection.query(query,
         function (err, result) {
