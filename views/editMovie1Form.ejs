@@ -1,0 +1,19 @@
+<% // create a list of javascript files to have the header load %>
+<% var js_include = ['edit_movie1.js']; %>
+<% include header %>
+
+<!-- Note that this is a post -->
+<form id="edit_movie1_form" action="<%= action %>">
+    <table id="login">
+        <tr><td>Title:</td>
+            <td><input type="hidden" id="MovieID" name="MovieID" value= <%= rs[0].MovieID %> /></td>
+            <td><input type="text" id="Title" name="Title" value= <%= rs[0].Title %> /></td>
+        </tr>
+</table>
+    <!-- not that we use a button here and not submit -->
+    <input type="button" id="editMovie1Btn" value="Update" />
+</form>
+
+<div id="output" style="margin:10px;display:none"></div>
+
+<% include footer %>

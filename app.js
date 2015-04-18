@@ -6,6 +6,7 @@ var express = require('express'),
 // import routes
 var routes = require('./controller/index');
 var movie1_route  = require('./controller/movie1');
+var genre1_route  = require('./controller/genre1');
 
 // initialize express web application framework
 // http://expressjs.com/
@@ -28,6 +29,7 @@ app.set('subtitle', 'Lab 18');
 //configure routes
 app.use('/', routes);
 app.use('/movie1', movie1_route);
+app.use('/genre1', genre1_route);
 
 // configure static directory for javascript, css, etc.
 app.use(express.static('public'));

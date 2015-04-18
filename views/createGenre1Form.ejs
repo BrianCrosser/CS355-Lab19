@@ -1,0 +1,32 @@
+<% // create a list of javascript files to have the header load %>
+<% var js_include = ['create_genre1.js']; %>
+<% include header %>
+
+<!-- Note that this is a post -->
+<form id="create_genre1_form" action="<%= action %>">
+    <% if(rs.length > 0) { %>
+        <label for="movie1_id">Movies</label>
+
+        <select id="movie1_id" name="movie1_id">
+            <% for (var i=0; rs.length > i; i++) { %>
+            <option value="<%= rs[i].MovieID %>">
+                <%= rs[i].Title %>
+            </option>
+    <% } %>
+    </select>
+
+    <table id="login">
+        <tr><td>Genre:</td>
+            <td><input type="text" id="Genre" name="Genre" /></td>
+        </tr>
+    </table>
+    <!-- not that we use a button here and not submit -->
+    <input type="button" id="createGenre1Btn" value="Create" />
+</form>
+<% } else { %>
+The table does not contain any records.
+<% } %>
+
+<div id="output" style="margin:10px;display:none"></div>
+
+<% include footer %>

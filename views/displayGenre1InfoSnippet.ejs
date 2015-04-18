@@ -1,0 +1,7 @@
+<h2>Movie Genre Inserted</h2>
+<% if(rs.length > 0) { %>
+    Title: <%= rs[0].Title %> <br />
+    Genre: <%= rs[0].Genre %> <br />
+<% } else { %>
+    No movies matched this title id <%= movie1id %>.
+<% } %>
