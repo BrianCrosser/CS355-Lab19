@@ -19,13 +19,18 @@ router.get('/', function (req, res) {
         res.redirect('/movie1/all');
     }
     else {
-        db.GetByIDMovie(req.query.movie1id, function (err, result) {
+        db.GetByIDMovie(req.query.movie1id, function (err, result)
+        {
+            if (err) throw err;
+
+            db.GetByMovieIDGenre(req.query.movie1id, function (err, result1)
+            {
                 if (err) throw err;
 
                 // Send result to the template along with the original student id in case there were no results
-                res.render('displayMovie1Info.ejs', {rs: result, movie1id: req.query.movie1id});
-            }
-        );
+                res.render('displayMovie1Info.ejs', {rs: result, movie1id: req.query.movie1id, rs1: result1});
+            });
+        });
     }
 });
 

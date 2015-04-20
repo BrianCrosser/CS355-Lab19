@@ -142,6 +142,22 @@ exports.GetByIDGenre = function(genre1id, callback) {
     );
 }
 
+exports.GetByMovieIDGenre = function(movie1id, callback) {
+    console.log(movie1id);
+    var query = 'select Genre from Genre1 WHERE MovieID=' + movie1id;
+    console.log(query);
+    connection.query(query,
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+                return;
+            }
+            callback(false, result);
+        }
+    );
+}
+
 exports.InsertGenre = function(genre1_info, callback) {
     console.log(genre1_info);
     var query = 'INSERT INTO Genre1(MovieID, Genre) VALUES (' + genre1_info.MovieID + ', "' + genre1_info.Genre + '")';
@@ -158,3 +174,172 @@ exports.InsertGenre = function(genre1_info, callback) {
     );
 }
 
+exports.GetAllRating = function(callback) {
+    connection.query('select * from Rating1',
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+                return;
+            }
+            console.log(result);
+            callback(false, result);
+        }
+    );
+}
+
+exports.GetAllViewRating = function(callback) {
+    // CREATE VIEW StudentsView AS SELECT * FROM Students;
+    connection.query('select * from Rating1',
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+                return;
+            }
+            callback(false, result);
+        }
+    );
+}
+
+
+exports.GetByIDRating = function(rating1id, callback) {
+    console.log(rating1id);
+    var query = 'select Title, Rating from Rating1 JOIN Movie1 ON Rating1.MovieID=Movie1.MovieID WHERE RatingID=' + rating1id;
+    console.log(query);
+    connection.query(query,
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+                return;
+            }
+            callback(false, result);
+        }
+    );
+}
+
+exports.GetByMovieIDRating = function(movie1id, callback) {
+    console.log(movie1id);
+    var query = 'select Rating from Rating1 WHERE MovieID=' + movie1id;
+    console.log(query);
+    connection.query(query,
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+                return;
+            }
+            callback(false, result);
+        }
+    );
+}
+
+exports.InsertRating = function(rating1_info, callback) {
+    console.log(rating1_info);
+    var query = 'INSERT INTO Rating1(MovieID, Rating) VALUES (' + rating1_info.MovieID + ', ' + rating1_info.Genre + ')';
+    console.log(query);
+    connection.query(query,
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+                return
+            }
+            callback(false, result);
+        }
+    );
+}
+
+exports.GetAllUser = function(callback) {
+    connection.query('select * from User1',
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+                return;
+            }
+            console.log(result);
+            callback(false, result);
+        }
+    );
+}
+
+exports.GetAllViewUser = function(callback) {
+    // CREATE VIEW StudentsView AS SELECT * FROM Students;
+    connection.query('select * from User1;',
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+                return;
+            }
+            callback(false, result);
+        }
+    );
+}
+
+
+exports.GetByIDUser = function(user1id, callback) {
+    console.log(user1id);
+    var query = 'select * from User1 WHERE UserID=' + user1id;
+    console.log(query);
+    connection.query(query,
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+                return;
+            }
+            callback(false, result);
+        }
+    );
+}
+
+exports.InsertUser = function(user1_info, callback) {
+    console.log(user1_info);
+    var query = 'INSERT INTO User1 (Username, Firstname, Lastname) VALUES ("' + user1_info.Username + '", "' + user1_info.Firstname + '", "' + user1_info.Lastname + '")';
+    console.log(query);
+    connection.query(query,
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+                return
+            }
+            callback(false, result);
+        }
+    );
+}
+
+exports.UpdateUser = function(user1_info, callback) {
+    console.log(user1_info);
+    var query = 'UPDATE User1 SET Username="' + user1_info.Username + '", Firstname="' + user1_info.Firstname + '",  LastName="' + user1_info.Lastname + '" WHERE UserID=' + user1_info.UserID + ';';
+    console.log(query);
+    connection.query(query,
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+                return
+            }
+            callback(false, result);
+        }
+    );
+}
+
+exports.DeleteUser = function(user1_info, callback) {
+    console.log(user1_info);
+    var query = 'DELETE FROM User1 WHERE UserID=' + user1_info.user1id + ';';
+    console.log(query);
+    connection.query(query,
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+                return
+            }
+            callback(false, result);
+        }
+    );
+}
