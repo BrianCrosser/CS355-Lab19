@@ -26,9 +26,14 @@ router.get('/', function (req, res) {
             db.GetByMovieIDGenre(req.query.movie1id, function (err, result1)
             {
                 if (err) throw err;
+                db.GetByMovieIDRating(req.query.movie1id, function (err, result2)
+                {
+                    if (err) throw err;
 
-                // Send result to the template along with the original student id in case there were no results
-                res.render('displayMovie1Info.ejs', {rs: result, movie1id: req.query.movie1id, rs1: result1});
+                    // Send result to the template along with the original student id in case there were no results
+                    res.render('displayMovie1Info.ejs', {rs: result, movie1id: req.query.movie1id, rs1: result1, rs2: result2});
+                });
+
             });
         });
     }

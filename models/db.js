@@ -205,7 +205,7 @@ exports.GetAllViewRating = function(callback) {
 
 exports.GetByIDRating = function(rating1id, callback) {
     console.log(rating1id);
-    var query = 'select Title, Rating from Rating1 JOIN Movie1 ON Rating1.MovieID=Movie1.MovieID WHERE RatingID=' + rating1id;
+    var query = 'select Title, Username, Rating from Rating1 JOIN Movie1 ON Rating1.MovieID=Movie1.MovieID JOIN User1 ON User1.UserID=Rating1.UserID WHERE RatingID=' + rating1id;
     console.log(query);
     connection.query(query,
         function (err, result) {
@@ -221,7 +221,7 @@ exports.GetByIDRating = function(rating1id, callback) {
 
 exports.GetByMovieIDRating = function(movie1id, callback) {
     console.log(movie1id);
-    var query = 'select Rating from Rating1 WHERE MovieID=' + movie1id;
+    var query = 'select Username, Rating from Rating1 JOIN User1 ON User1.UserID=Rating1.UserID WHERE MovieID=' + movie1id;
     console.log(query);
     connection.query(query,
         function (err, result) {
@@ -237,7 +237,7 @@ exports.GetByMovieIDRating = function(movie1id, callback) {
 
 exports.InsertRating = function(rating1_info, callback) {
     console.log(rating1_info);
-    var query = 'INSERT INTO Rating1(MovieID, Rating) VALUES (' + rating1_info.MovieID + ', ' + rating1_info.Genre + ')';
+    var query = 'INSERT INTO Rating1(MovieID, UserID, Rating) VALUES (' + rating1_info.MovieID + ', ' + rating1_info.UserID + ', ' + rating1_info.Rating + ')';
     console.log(query);
     connection.query(query,
         function (err, result) {

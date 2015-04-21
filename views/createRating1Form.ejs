@@ -14,6 +14,19 @@
             </option>
     <% } %>
     </select>
+    <br />
+
+    <% if(rs1.length > 0) { %>
+    <label for="UserID">Users</label>
+
+    <select id="UserID" name="UserID">
+        <% for (var i=0; rs1.length > i; i++) { %>
+        <option value="<%= rs1[i].UserID %>">
+            <%= rs1[i].Username %>
+        </option>
+        <% } %>
+    </select>
+    <br />
 
     <table id="login">
         <label for="Rating">Ratings</label>
@@ -29,12 +42,16 @@
            <option value="<%= 1 %>"> <%= 1 %>
            </option>
     </select>
+    <br />
+
     <!-- not that we use a button here and not submit -->
     <input type="button" id="createRating1Btn" value="Create" />
+
 </form>
-<% } else { %>
+<% } }  else { %>
 The table does not contain any records.
 <% } %>
+<br />
 
 <div id="output" style="margin:10px;display:none"></div>
 

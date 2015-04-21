@@ -34,7 +34,11 @@ router.get('/create', function(req, res){
     db.GetAllViewMovie(function (err, result)
     {
         if (err) throw err;
-        res.render('createRating1Form.ejs', {action: '/rating1/create', rs: result});
+        db.GetAllViewUser(function (err, result1)
+        {
+            if (err) throw err;
+            res.render('createRating1Form.ejs', {action: '/rating1/create', rs: result, rs1: result1});
+        });
     });
     //res.render('createGenre1Form.ejs', {action: '/genre1/create'});
 });

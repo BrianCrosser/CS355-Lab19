@@ -2,6 +2,7 @@ $(document).ready(function () {
     $('#createRating1Btn').click( function(){
         var payload = {
             MovieID: $('#movie1_id').val(),
+            UserID: $('#UserID').val(),
             Rating: $('#Rating').val()
         };
 
